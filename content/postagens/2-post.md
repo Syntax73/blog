@@ -2,6 +2,7 @@
 title: 'Minha segunda postagem'
 description: 'Um dos principios do SOLID mais mal entendidos'
 author: Sandro Maciel
+createdAt: '2022-10-19'
 ---
 
 # Teste de postagem 2
