@@ -8,7 +8,7 @@ const links = ref([
   },
   {
     title: "Sobre",
-    path: "about",
+    path: "/about",
   },
 ]);
 </script>
