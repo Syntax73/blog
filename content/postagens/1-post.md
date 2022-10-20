@@ -29,3 +29,17 @@ Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec laoreet est inter
 #### 4 Heading
 ##### 5 Heading
 ###### 6 Heading
+
+**bold text**
+*italicized text*
+> blockquote
+
+1. First item
+2. Second item
+3. Third item
+
+- First item
+- Second item
+- Third item
+
+[title](https://www.example.com)

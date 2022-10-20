@@ -52,4 +52,16 @@ const { data } = await useAsyncData(`content-${route.path}`, () =>
 .content :deep(p) {
   @apply mb-3;
 }
+
+.content :deep(ol) {
+  @apply list-decimal list-inside pl-4;
+}
+
+.content :deep(ul) {
+  @apply list-disc list-inside pl-4;
+}
+
+.content :deep(blockquote) {
+  @apply border-l-2 border-gray-700 pl-3;
+}
 </style>
