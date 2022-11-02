@@ -11,7 +11,8 @@
 		"@nuxtjs/tailwindcss": "^5.3.3",
 		"@vueuse/core": "^9.4.0",
 		"@vueuse/nuxt": "^9.4.0",
-		"nuxt": "^3.0.0-rc.10"
+		"nuxt": "^3.0.0-rc.10",
+		"nuxt-icon": "^0.1.7"
 	},
 	"overrides": {
 		"@types/node": "^18.11.8"

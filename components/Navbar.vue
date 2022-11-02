@@ -26,8 +26,12 @@ const links = ref([
 					{{ link.title }}
 				</nuxt-link>
 			</li>
-			<button @click="toggleDark()" class="bg-slate-600 rounded-md p-1">
-				Dark Mode
+			<button
+				@click="toggleDark()"
+				class="bg-slate-600 rounded-md p-1 flex justify-center items-center"
+			>
+				<Icon name="ph:sun" size="24" v-if="isDark" />
+				<Icon name="ph:moon" size="24" v-else />
 			</button>
 		</ul>
 	</nav>
