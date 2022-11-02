@@ -11,7 +11,7 @@ const links = ref([
 	},
 	{
 		title: 'Sobre',
-		path: '/about',
+		path: '/sobre',
 	},
 ]);
 </script>

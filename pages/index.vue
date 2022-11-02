@@ -1,20 +1,19 @@
-<script setup>
-const { data } = await useAsyncData("home", () =>
-  queryContent("/postagens").limit(3).find()
+<script setup lang="ts">
+const { data: articles } = await useAsyncData('home', () =>
+	queryContent('/postagens').limit(3).find()
 );
 </script>
 
 <template>
-  <main class="mt-2">
-    <ul>
-      <li v-for="post in data" :key="post._id" class="flex justify-center">
-        <NuxtLink :to="post._path">
-          <div class="bg-slate-700 h-24 w-80 rounded-md">
-            <h3>{{ post.title }}</h3>
-            <p>{{ post.description }}</p>
-          </div>
-        </NuxtLink>
-      </li>
-    </ul>
-  </main>
+	<main class="mt-2 max-w-5xl m-auto p-3">
+		<ArticleCard
+			v-for="post in articles"
+			:key="post._id"
+			:title="post.title"
+			:description="post.description"
+			:author="post.author"
+			:path="post._path"
+			:reading-time="12"
+		/>
+	</main>
 </template>
