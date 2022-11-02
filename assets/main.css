@@ -4,6 +4,9 @@
 
 body {
 	@apply text-zinc-900 bg-light-100 dark:bg-slate-800 dark:text-white;
+	-webkit-font-smoothing: antialiased;
+	text-rendering: optimizeLegibility;
+	overflow-wrap: break-word;
 }
 
 h1 {

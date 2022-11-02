@@ -21,13 +21,14 @@ const formatedDate = computed(() => {
 			&lt; Voltar
 		</button>
 
-		<h1 class="text-4xl font-bold text-gray-900 mb-3">{{ props.title }}</h1>
+		<h1 class="text-4xl font-bold mb-3">{{ props.title }}</h1>
 
 		<div class="flex flex-col text mb-3 gap-3">
-			<span class="text-gray-600">Em: {{ formatedDate }}</span>
-			<span class="text-gray-600">Por: {{ props.author }}</span>
+			<span class="head-text"> Em: {{ formatedDate }} </span>
 
-			<div v-if="tags" class="text-gray-600">
+			<span class="head-text"> Por: {{ props.author }} </span>
+
+			<div v-if="tags" class="head-text">
 				Tags:
 				<NuxtLink
 					v-for="tag in props.tags"
@@ -40,6 +41,12 @@ const formatedDate = computed(() => {
 			</div>
 		</div>
 
-		<p class="text-gray-900">{{ props.description }}</p>
+		<p>{{ props.description }}</p>
 	</header>
 </template>
+
+<style scoped>
+.head-text {
+	@apply text-gray-600 dark:text-gray-400;
+}
+</style>
