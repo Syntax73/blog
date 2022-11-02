@@ -1,11 +1,8 @@
 <script setup>
 import { ref } from 'vue';
 
-const asdf = () => {
-	console.log('sdf');
-};
-
-[].map(e => console.log(e));
+const isDark = useDark();
+const toggleDark = useToggle(isDark);
 
 const links = ref([
 	{
@@ -20,7 +17,7 @@ const links = ref([
 </script>
 
 <template>
-	<nav class="p-4 bg-neutral-600 flex justify-around">
+	<nav class="p-4 bg-light-300 flex justify-around">
 		<nuxt-link to="/">LOGO</nuxt-link>
 
 		<ul class="flex justify-between w-60">
@@ -29,7 +26,9 @@ const links = ref([
 					{{ link.title }}
 				</nuxt-link>
 			</li>
-			<button>Dark Mode</button>
+			<button @click="toggleDark()" class="bg-slate-600 rounded-md p-1">
+				Dark Mode
+			</button>
 		</ul>
 	</nav>
 </template>

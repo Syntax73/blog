@@ -3,7 +3,7 @@
 @tailwind utilities;
 
 body {
-	@apply text-gray-900;
+	@apply text-zinc-900 bg-light-100 dark:bg-slate-800 dark:text-white;
 }
 
 h1 {
