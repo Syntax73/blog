@@ -1,11 +1,12 @@
 ---
 title: 'Minha primeira postagem muito massa pra vocês'
-description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam quam lectus, efficitur ut leo eget, ultrices varius quam. Suspendisse at tincidunt odio. Fusce magna nibh, maximus eget rutrum non, vestibulum sit amet justo. Nam iaculis auctor erat, quis nunc. '
+description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam quam lectus, efficitur ut leo eget, ultrices varius quam. Suspendisse at tincidunt odio. Fusce magna nibh, maximus eget rutrum non, vestibulum sit amet justo. Nam iaculis auctor erat, quis nunc. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam quam lectus, efficitur ut leo eget, ultrices varius quam. Suspendisse at tincidunt odio. Fusce magna nibh, maximus eget rutrum non, vestibulum sit amet justo. Nam iaculis auctor erat, quis nunc. '
 author: Sandro Maciel
 tags:
   - Programação
   - Javascript
   - VueJs
+preview: 'https://myocn.net/wp-content/uploads/2019/04/cross.jpg'
 createdAt: '2022-10-19'
 ---
 

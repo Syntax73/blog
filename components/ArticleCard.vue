@@ -2,6 +2,7 @@
 const props = defineProps<{
 	title: string;
 	description: string;
+	preview: string;
 	author: string;
 	readingTime: number;
 	path: string;
@@ -10,15 +11,34 @@ const props = defineProps<{
 
 <template>
 	<NuxtLink :to="props.path">
-		<div class="bg-light-300 dark:bg-slate-700 rounded-md p-3 mb-3">
-			<h3>{{ props.title }}</h3>
+		<div
+			class="bg-light-300 dark:bg-slate-700 rounded-md p-4 h-full hover:scale-105 transition-transform duration-200"
+		>
+			<figure
+				class="h-40 bg-center bg-cover"
+				:style="{ backgroundImage: `url(${props.preview})` }"
+			></figure>
 
-			<p>{{ props.description }}</p>
+			<div>
+				<h3>{{ props.title }}</h3>
 
-			<div class="flex justify-between">
-				<span> Por: {{ props.author }} </span>
-				<span> {{ props.readingTime }} minutos de leitura.</span>
+				<p class="article-desc">{{ props.description }}</p>
+
+				<div class="flex justify-between text-xs">
+					<span> Por: {{ props.author }} </span>
+					<span> {{ props.readingTime }} minutos de leitura.</span>
+				</div>
 			</div>
 		</div>
 	</NuxtLink>
 </template>
+<style scoped>
+.article-desc {
+	height: 98px;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	display: -webkit-box;
+	-webkit-line-clamp: 4;
+	-webkit-box-orient: vertical;
+}
+</style>
