@@ -5,6 +5,10 @@ const { data: article } = await useAsyncData(`content-${route.path}`, () =>
 	queryContent().where({ _path: route.path }).findOne()
 );
 
+const [prevArticle, nextArticle] = await queryContent()
+	.only(['_path', 'title'])
+	.findSurround({ _path: route.path });
+
 const toc = computed(() => article.value.body.toc.links);
 </script>
 
@@ -19,10 +23,16 @@ const toc = computed(() => article.value.body.toc.links);
 				:created-at="article.createdAt"
 			/>
 
-			<ContentRenderer :value="article" class="content" />
+			<section>
+				<ContentRenderer :value="article" class="content" />
+			</section>
+
+			<section>
+				<BlogPrevNextArticle :prev="prevArticle" :next="nextArticle" />
+			</section>
 		</article>
 
-		<aside class="mt-10">
+		<aside class="mt-10 hidden md:block">
 			<nav class="sticky top-16">
 				<h2 class="font-semibold text-lg mb-2">Conteúdo</h2>
 

@@ -1,5 +1,5 @@
 ---
-title: 'Só mais uma postagem'
+title: 'Só mais uma postagem Só mais uma postagem Só mais uma postagem Só mais uma postagem Só mais uma postagem Só mais uma postagem '
 description: 'Um dos principios do SOLID mais mal entendidos'
 author: Sandro Maciel
 preview: 'https://myocn.net/wp-content/uploads/2019/04/cross.jpg'
