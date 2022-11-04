@@ -20,7 +20,7 @@ const props = defineProps<{
 			></figure>
 
 			<div>
-				<h3>{{ props.title }}</h3>
+				<h3 class="article-title">{{ props.title }}</h3>
 
 				<p class="article-desc">{{ props.description }}</p>
 
@@ -33,6 +33,16 @@ const props = defineProps<{
 	</NuxtLink>
 </template>
 <style scoped>
+.article-title {
+	margin-top: 12px;
+	height: 56px;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	display: -webkit-box;
+	-webkit-line-clamp: 2;
+	-webkit-box-orient: vertical;
+}
+
 .article-desc {
 	height: 98px;
 	overflow: hidden;
