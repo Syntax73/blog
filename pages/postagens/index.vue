@@ -1,6 +1,35 @@
 <script setup>
-const { data: articles } = await useAsyncData('posts', () =>
-	queryContent('/postagens').find()
+const route = useRoute();
+
+const { data: articles } = await useAsyncData(
+	'posts',
+	() => {
+		if (route.query.search) {
+			const search = route.query.search;
+			const splitedSearch = search.trim().split(' ');
+
+			return queryContent('/postagens')
+				.where({
+					$or: [
+						{
+							title: { $contains: splitedSearch },
+						},
+						{
+							description: { $contains: splitedSearch },
+						},
+						{
+							author: { $contains: splitedSearch },
+						},
+					],
+				})
+				.find();
+		}
+
+		return queryContent('/postagens').find();
+	},
+	{
+		watch: [() => route.query.search],
+	}
 );
 
 const { data: queryArticleDates } = await useAsyncData('article-dates', () =>
