@@ -3,7 +3,7 @@ title: 'Minha segunda postagem'
 description: 'Um dos principios do SOLID mais mal entendidos'
 author: Sandro Maciel
 preview: 'https://myocn.net/wp-content/uploads/2019/04/cross.jpg'
-createdAt: '2022-10-19'
+createdAt: '2022-11-19'
 ---
 
 ## Teste de postagem 2
