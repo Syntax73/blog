@@ -4,6 +4,8 @@ const route = useRoute();
 const { data: articles } = await useAsyncData(
 	'posts',
 	() => {
+		const page = route.query.page;
+
 		if (route.query.search) {
 			const search = route.query.search;
 			const splitedSearch = search.trim().split(' ');
@@ -25,10 +27,13 @@ const { data: articles } = await useAsyncData(
 				.find();
 		}
 
-		return queryContent('/postagens').find();
+		return queryContent('/postagens')
+			.limit(1)
+			.skip((page - 1) * 1)
+			.find();
 	},
 	{
-		watch: [() => route.query.search],
+		watch: [() => route.query.search, () => route.query.page],
 	}
 );
 
@@ -51,6 +56,8 @@ const { data: queryArticleDates } = await useAsyncData('article-dates', () =>
 					:path="post._path"
 					:reading-time="12"
 				/>
+
+				<ArticlePrevNextPage :currentPage="2" :hasNextPage="true" />
 			</section>
 			<aside class="col-span-2 flex flex-col gap-3">
 				<SearchInput />
