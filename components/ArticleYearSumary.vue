@@ -84,7 +84,7 @@ const formatedArticleSumary = computed(() => {
 				<NuxtLink
 					v-for="ultima in month.articles"
 					:to="ultima.link"
-					class="ml-5"
+					class="ml-5 summary-link"
 				>
 					{{ ultima.title }}
 				</NuxtLink>
@@ -92,3 +92,14 @@ const formatedArticleSumary = computed(() => {
 		</details>
 	</div>
 </template>
+
+<style scoped>
+.summary-link {
+	max-height: 52px;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	display: -webkit-box;
+	-webkit-line-clamp: 2;
+	-webkit-box-orient: vertical;
+}
+</style>
