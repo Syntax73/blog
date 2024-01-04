@@ -32,6 +32,7 @@ const props = defineProps<{
 		</div>
 	</NuxtLink>
 </template>
+
 <style scoped>
 .article-title {
 	margin-top: 12px;

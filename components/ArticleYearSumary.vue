@@ -1,12 +1,12 @@
 <script setup lang="ts">
-interface IArticleYearSumary {
+interface IArticleYearSummary {
 	title: string;
 	_path: string;
 	createdAt: string;
 }
 
 const { years } = defineProps<{
-	years: IArticleYearSumary[];
+	years: IArticleYearSummary[];
 }>();
 
 interface IYearSumary {
@@ -20,12 +20,12 @@ interface IYearSumary {
 	}[];
 }
 
-const formatedArticleSumary = computed(() => {
+const formattedArticleSummary = computed(() => {
 	const articleYears = new Set(
 		years.map(e => new Date(e.createdAt).getFullYear())
 	);
 
-	const formatedProps = years.map(e => ({
+	const formattedProps = years.map(e => ({
 		...e,
 		createdAt: new Date(e.createdAt),
 	}));
@@ -33,7 +33,7 @@ const formatedArticleSumary = computed(() => {
 	const finalResult: IYearSumary[] = [];
 
 	articleYears.forEach(currentYear => {
-		const articles = formatedProps.filter(
+		const articles = formattedProps.filter(
 			article => article.createdAt.getFullYear() === currentYear
 		);
 
@@ -45,7 +45,7 @@ const formatedArticleSumary = computed(() => {
 			)
 		);
 
-		const articleMonts = Array.from(filteredMoths).map(currentMonth => {
+		const articleMonths = Array.from(filteredMoths).map(currentMonth => {
 			const fountArticleOfTheMonth = articles.filter(
 				article =>
 					article.createdAt.toLocaleDateString('pt-BR', {
@@ -65,7 +65,7 @@ const formatedArticleSumary = computed(() => {
 
 		finalResult.push({
 			year: `${currentYear} (${articles.length})`,
-			months: articleMonts,
+			months: articleMonths,
 		});
 	});
 
@@ -75,7 +75,7 @@ const formatedArticleSumary = computed(() => {
 
 <template>
 	<div class="bg-light-300 dark:bg-slate-700 rounded-md p-3 w-full">
-		<details v-for="year in formatedArticleSumary">
+		<details v-for="year in formattedArticleSummary">
 			<summary>{{ year.year }}</summary>
 
 			<details v-for="month in year.months" class="ml-2 flex flex-col">
