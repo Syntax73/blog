@@ -27,22 +27,39 @@ const [prevArticle, nextArticle] = await queryContent()
 	.only(['_path', 'title'])
 	.findSurround({ _path: route.path });
 
-const toc = computed(() => article.value.body.toc.links);
+const toc = computed(() => article.value?.body?.toc?.links);
+
+useSeoMeta({
+	title: article.value?.title,
+	description: () => article.value?.description,
+	// Facebook
+	ogTitle: () => article.value?.title,
+	ogDescription: () => article.value?.description,
+	ogImage: () => article.value?.preview,
+	ogLocale: 'pt_BR',
+	ogType: 'article',
+	// Twitter/X
+	twitterTitle: () => article.value?.title,
+	twitterDescription: () => article.value?.description,
+	twitterImage: () => article.value?.preview,
+	twitterCreator: () => article.value?.author,
+	twitterCard: 'summary_large_image',
+});
 </script>
 
 <template>
 	<main class="max-w-5xl m-auto p-3 grid grid-cols-5 gap-8">
 		<article class="col-span-5 md:col-span-4">
 			<BlogHeader
-				:title="article.title"
-				:author="article.author"
-				:description="article.description"
-				:tags="article.tags"
-				:created-at="article.createdAt"
+				:title="article?.title!"
+				:author="article?.author!"
+				:description="article?.description!"
+				:tags="article?.tags!"
+				:created-at="article?.createdAt!"
 			/>
 
 			<section>
-				<ContentRenderer :value="article" class="content" />
+				<ContentRenderer :value="article!" class="content" />
 			</section>
 
 			<section>
@@ -54,7 +71,7 @@ const toc = computed(() => article.value.body.toc.links);
 			<nav class="sticky top-16">
 				<h2 class="font-semibold text-lg mb-2">Conteúdo</h2>
 
-				<BlogTableContent :links="toc" />
+				<BlogTableContent :links="toc!" />
 			</nav>
 		</aside>
 	</main>

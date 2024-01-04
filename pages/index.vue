@@ -25,7 +25,7 @@ const { data: articles } = await useAsyncData('home', () =>
 				:description="post.description"
 				:preview="post.preview"
 				:author="post.author"
-				:path="post._path"
+				:path="post._path!"
 				:reading-time="12"
 				:class="!index ? 'sm:col-span-2' : ''"
 			/>

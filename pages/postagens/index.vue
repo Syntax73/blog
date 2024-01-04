@@ -62,11 +62,11 @@ const { data: queryArticleDates } = await useAsyncData('article-dates', () =>
 				<ArticleCard
 					v-for="post in articles"
 					:key="post._id"
-					:title="post.title"
+					:title="post.title!"
 					:description="post.description"
 					:preview="post.preview"
 					:author="post.author"
-					:path="post._path"
+					:path="post._path!"
 					:reading-time="12"
 				/>
 
@@ -74,7 +74,7 @@ const { data: queryArticleDates } = await useAsyncData('article-dates', () =>
 			</section>
 			<aside class="col-span-2 flex flex-col gap-3">
 				<SearchInput />
-				<ArticleYearSummary :years="queryArticleDates" />
+				<ArticleYearSummary :years="queryArticleDates!" />
 			</aside>
 		</article>
 	</main>
