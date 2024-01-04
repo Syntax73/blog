@@ -16,6 +16,13 @@ const { data: article } = await useAsyncData(`content-${route.path}`, () =>
 	queryContent<Article>().where({ _path: route.path }).findOne()
 );
 
+if (!article.value) {
+	throw createError({
+		statusCode: 404,
+		statusMessage: 'Artigo não encontrado',
+	});
+}
+
 const [prevArticle, nextArticle] = await queryContent()
 	.only(['_path', 'title'])
 	.findSurround({ _path: route.path });
