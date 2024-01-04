@@ -1,6 +1,17 @@
 <script setup lang="ts">
+import type { MarkdownParsedContent } from '@nuxt/content/dist/runtime/types';
+
+interface Article extends MarkdownParsedContent {
+	title: string;
+	description: string;
+	author: string;
+	tags: string[];
+	preview: string;
+	createdAt: string;
+}
+
 const { data: articles } = await useAsyncData('home', () =>
-	queryContent('/postagens').find()
+	queryContent<Article>('/postagens').find()
 );
 </script>
 

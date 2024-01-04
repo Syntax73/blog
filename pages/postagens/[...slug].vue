@@ -1,8 +1,19 @@
 <script setup lang="ts">
+import type { MarkdownParsedContent } from '@nuxt/content/dist/runtime/types';
+
+interface Article extends MarkdownParsedContent {
+	title: string;
+	description: string;
+	author: string;
+	tags: string[];
+	preview: string;
+	createdAt: string;
+}
+
 const route = useRoute();
 
 const { data: article } = await useAsyncData(`content-${route.path}`, () =>
-	queryContent().where({ _path: route.path }).findOne()
+	queryContent<Article>().where({ _path: route.path }).findOne()
 );
 
 const [prevArticle, nextArticle] = await queryContent()

@@ -1,4 +1,15 @@
-<script setup>
+<script setup lang="ts">
+import type { MarkdownParsedContent } from '@nuxt/content/dist/runtime/types';
+
+interface Article extends MarkdownParsedContent {
+	title: string;
+	description: string;
+	author: string;
+	tags: string[];
+	preview: string;
+	createdAt: string;
+}
+
 const route = useRoute();
 
 const { data: articles } = await useAsyncData(
@@ -8,19 +19,19 @@ const { data: articles } = await useAsyncData(
 
 		if (route.query.search) {
 			const search = route.query.search;
-			const splitedSearch = search.trim().split(' ');
+			const splittedSearch = search.toString().trim().split(' ');
 
-			return queryContent('/postagens')
+			return queryContent<Article>('/postagens')
 				.where({
 					$or: [
 						{
-							title: { $contains: splitedSearch },
+							title: { $contains: splittedSearch },
 						},
 						{
-							description: { $contains: splitedSearch },
+							description: { $contains: splittedSearch },
 						},
 						{
-							author: { $contains: splitedSearch },
+							author: { $contains: splittedSearch },
 						},
 					],
 				})
@@ -29,7 +40,7 @@ const { data: articles } = await useAsyncData(
 
 		return queryContent('/postagens')
 			.limit(1)
-			.skip((page - 1) * 1)
+			.skip((Number(page) - 1) * 1)
 			.find();
 	},
 	{
@@ -38,7 +49,9 @@ const { data: articles } = await useAsyncData(
 );
 
 const { data: queryArticleDates } = await useAsyncData('article-dates', () =>
-	queryContent('/postagens').only(['title', '_path', 'createdAt']).find()
+	queryContent<Article>('/postagens')
+		.only(['title', '_path', 'createdAt'])
+		.find()
 );
 </script>
 
@@ -61,7 +74,7 @@ const { data: queryArticleDates } = await useAsyncData('article-dates', () =>
 			</section>
 			<aside class="col-span-2 flex flex-col gap-3">
 				<SearchInput />
-				<ArticleYearSumary :years="queryArticleDates" />
+				<ArticleYearSummary :years="queryArticleDates" />
 			</aside>
 		</article>
 	</main>

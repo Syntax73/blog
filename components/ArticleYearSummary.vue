@@ -9,7 +9,7 @@ const { years } = defineProps<{
 	years: IArticleYearSummary[];
 }>();
 
-interface IYearSumary {
+interface IYearSummary {
 	year: string;
 	months: {
 		month: string;
@@ -30,7 +30,7 @@ const formattedArticleSummary = computed(() => {
 		createdAt: new Date(e.createdAt),
 	}));
 
-	const finalResult: IYearSumary[] = [];
+	const finalResult: IYearSummary[] = [];
 
 	articleYears.forEach(currentYear => {
 		const articles = formattedProps.filter(
