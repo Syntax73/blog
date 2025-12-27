@@ -14,7 +14,7 @@ if (!article.value) {
 
 const [prevArticle, nextArticle] = await queryCollectionItemSurroundings(
 	'postagens',
-	'/post',
+	route.path,
 );
 
 const toc = computed(() => article.value?.body?.toc?.links);
